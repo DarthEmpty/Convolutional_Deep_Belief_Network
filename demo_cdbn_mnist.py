@@ -75,7 +75,6 @@ class MNIST_HANDLER(object):
       result_bis = operand_bis[index:index + batch_size,:]
     return result, result_bis
         
-
 mnist_dataset = MNIST_HANDLER(input_data.read_data_sets('data', one_hot=True))
 #mnist_dataset.do_whiten()
 sess = tf.Session()
@@ -87,7 +86,7 @@ sess = tf.Session()
     ------------------- MODEL -------------------
     --------------------------------------------- """
 
-my_cdbn = cdbn.CDBN('mnist_cdbn', 20, '/home/arthur/pedestrian_detection/log', mnist_dataset, sess, verbosity = 2)
+my_cdbn = cdbn.CDBN('mnist_cdbn', 20, '/home/joel/Documents/git/Speech-Recognition-for-Broken-Speech/src/classify/Convolutional_Deep_Belief_Network/log', mnist_dataset, sess, verbosity = 2)
 
 my_cdbn.add_layer('layer_1', fully_connected = False, v_height = 28, v_width = 28, v_channels = 1, f_height = 11, f_width = 11, f_number = 40, 
                init_biases_H = -3, init_biases_V = 0.01, init_weight_stddev = 0.01, 
