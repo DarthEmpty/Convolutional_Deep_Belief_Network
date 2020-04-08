@@ -1,15 +1,16 @@
 import numpy as np
 import tensorflow as tf
-import cdbn_backup as cdbn
-
 
 class VoiceHandler:
-
     def __init__(self, train_data, train_labels, test_data, test_labels):
         self.train_data = train_data
         self.train_labels = train_labels
+        self.num_train_example = len(train_data)
+
         self.test_data = test_data
         self.test_labels = test_labels
+        self.num_test_example = len(test_data)
+
         self.whiten = False
         self.training_index = -20
         self.test_index = -20
@@ -78,3 +79,5 @@ class VoiceHandler:
             result = operand[index:index + batch_size, :]
             result_bis = operand_bis[index:index + batch_size, :]
         return result, result_bis
+
+

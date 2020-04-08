@@ -3,6 +3,7 @@ import numpy as np
 from tensorflow.examples.tutorials.mnist import mnist
 from tensorflow.examples.tutorials.mnist import input_data
 import cdbn_backup as cdbn
+import os
 
 
 """ --------------------------------------------
@@ -86,7 +87,7 @@ sess = tf.Session()
     ------------------- MODEL -------------------
     --------------------------------------------- """
 
-my_cdbn = cdbn.CDBN('mnist_cdbn', 20, '/home/joel/Documents/git/Speech-Recognition-for-Broken-Speech/src/classify/Convolutional_Deep_Belief_Network/log', mnist_dataset, sess, verbosity = 2)
+my_cdbn = cdbn.CDBN('mnist_cdbn', 20, os.getenv("CDBN_LOGS"), mnist_dataset, sess, verbosity = 2)
 
 my_cdbn.add_layer('layer_1', fully_connected = False, v_height = 28, v_width = 28, v_channels = 1, f_height = 11, f_width = 11, f_number = 40, 
                init_biases_H = -3, init_biases_V = 0.01, init_weight_stddev = 0.01, 
